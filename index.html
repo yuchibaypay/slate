@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>WebWallet API</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -297,12 +297,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo-1e815a84.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -315,25 +309,33 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#63bd7178db" class="toc-h1 toc-link" data-title="測試流程">測試流程</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#42e5c13455" class="toc-h2 toc-link" data-title="註冊帳號">註冊帳號</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#dc3d1e2f4f" class="toc-h2 toc-link" data-title="啟動使用者">啟動使用者</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#da8245197e" class="toc-h2 toc-link" data-title="登入">登入</a>
+                  </li>
+                  <li>
+                    <a href="#7c6f73128a" class="toc-h2 toc-link" data-title="查看總資產">查看總資產</a>
+                  </li>
+                  <li>
+                    <a href="#sendcoin" class="toc-h2 toc-link" data-title="SendCoin">SendCoin</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#md5-hash" class="toc-h1 toc-link" data-title="MD5 Hash">MD5 Hash</a>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -341,182 +343,969 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the WebWallet API! </p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>BASE URL</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">https://api.baypay.com
+</span></code></pre></div><h1 id='authentication'>Authentication</h1>
+<p>WebWallet uses HashKey to allow access to the API</p>
+<h1 id='63bd7178db'>測試流程</h1><h2 id='42e5c13455'>註冊帳號</h2>
+<p>註冊帳號</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>REQUEST BODY</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0bf8683a16b0a0a9f90d49c25745f95"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+886987654321"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p@ssw0rd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601260773</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>RESPONSE BODY</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"returnCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"電話尚未認證"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80febc7300b8d6e784b64e6a972288bb"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><strong>Request Headers</strong></p>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>HeadersName</th>
+<th>Required</th>
+<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>application/json</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p><strong>HTTP Request</strong></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><code>POST /api/WebWallet/register</code></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<p><strong>Request Body</strong></p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash 產生 (appId + phone + password + time + hashKey)</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>number</td>
+<td>appId (測試使用9)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>有加國碼的手機號碼, 例:+886987654321</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>密碼</td>
+</tr>
+<tr>
+<td>time</td>
+<td>number</td>
+<td><a href="https://www.unixtimestamp.com/">unix timestamp</a></td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><strong>Response Body</strong></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  <span class="nt">-X</span> DELETE
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>returnCode</td>
+<td>string</td>
+<td>如果是4代表用電話註冊成功</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>result</td>
+<td>object</td>
+<td>response data</td>
+</tr>
+</tbody></table>
+
+<p><strong>result</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash 產生 (appId + returnCode + hashKey)</td>
+</tr>
+</tbody></table>
+<h2 id='dc3d1e2f4f'>啟動使用者</h2>
+<p>透過上一個步驟</p>
+
+<p>系統已經將驗證碼經由簡訊傳到所填入的手機號碼</p>
+
+<p>接下來就是用驗證碼來啟動使用者</p>
+
+<blockquote>
+<p>REQUEST BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ba83f3a72d6f1b25790dc2334cdfb7e9"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+886987654321"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"666262"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601260773</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>RESPONSE BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"returnCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c7c9ffd08158f55034a6b2db184721"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>Request Headers</strong></p>
+
+<table><thead>
+<tr>
+<th>HeadersName</th>
+<th>Required</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<p><strong>HTTP Request</strong></p>
+
+<p><code>POST /api/WebWallet/activateUser</code></p>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appId + phone + email + confirmCode + time + hashKey)</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>number</td>
+<td>appId (測試使用9)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>有加國碼的手機號碼, 例:+886987654321</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>電子郵件, 目前只有使用手機, 可帶空值</td>
+</tr>
+<tr>
+<td>confirmCode</td>
+<td>string</td>
+<td>輸入簡訊收到的驗證碼</td>
+</tr>
+<tr>
+<td>time</td>
+<td>number</td>
+<td><a href="https://www.unixtimestamp.com/">unix timestamp</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>Response Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>returnCode</td>
+<td>string</td>
+<td>如果是1代表已經成功啟動使用者</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>result</td>
+<td>object</td>
+<td>response data</td>
+</tr>
+</tbody></table>
+
+<p><strong>result</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appId + returnCode + hashKey)</td>
+</tr>
+</tbody></table>
+<h2 id='da8245197e'>登入</h2>
+<p>Get UUID and sessionToken.</p>
+
+<blockquote>
+<p>REQUEST BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0bf8683a16b0a0a9f90d49c25745f95"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+886987654321"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p@ssw0rd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pushToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"os"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601260773</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>RESPONSE BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"returnCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c7c9ffd08158f55034a6b2db184721"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="s2">"UVJYMGM108"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isShop"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="mi">1601266463</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sessionToken"</span><span class="p">:</span><span class="s2">"d1f2f499-0a9b-4323-89b0-15abe32d3b24"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>Request Headers</strong></p>
+
+<table><thead>
+<tr>
+<th>HeadersName</th>
+<th>Required</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<p><strong>HTTP Request</strong></p>
+
+<p><code>POST /api/WebWallet/login</code></p>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appid + phone + password + pushToken + os + appVersion + appCode + time + hashKey)</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>number</td>
+<td>appId (測試使用9)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>有加國碼的手機號碼, 例:+886987654321</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>密碼</td>
+</tr>
+<tr>
+<td>pushToken</td>
+<td>string</td>
+<td>推播用  目前可先空值</td>
+</tr>
+<tr>
+<td>os</td>
+<td>string</td>
+<td>android or ios 可空值</td>
+</tr>
+<tr>
+<td>appVersion</td>
+<td>string</td>
+<td>appVersion 可空值</td>
+</tr>
+<tr>
+<td>appCode</td>
+<td>string</td>
+<td>appCode 可空值</td>
+</tr>
+<tr>
+<td>time</td>
+<td>number</td>
+<td><a href="https://www.unixtimestamp.com/">unix timestamp</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>Response Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>returnCode</td>
+<td>string</td>
+<td>returnCode</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>result</td>
+<td>object</td>
+<td>response data</td>
+</tr>
+</tbody></table>
+
+<p><strong>result</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appid+ retuenCode + uuid + isShop  + sessionToken +  time + hashKey)</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>string</td>
+<td>unique user id</td>
+</tr>
+<tr>
+<td>isShop</td>
+<td>bool</td>
+<td>使用者是否是商家</td>
+</tr>
+<tr>
+<td>time</td>
+<td>number</td>
+<td><a href="https://www.unixtimestamp.com/">unix timestamp</a></td>
+</tr>
+<tr>
+<td>seesionToken</td>
+<td>string</td>
+<td>每次登入都會產生新的seesionToken</td>
+</tr>
+</tbody></table>
+<h2 id='7c6f73128a'>查看總資產</h2>
+<p>查看總資產.</p>
+
+<p>coins 下可看到各個代幣的 數量, rate 及法幣價值</p>
+
+<blockquote>
+<p>REQUEST BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6d56c1d5a3bc81048aa936575f2c0a4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UVJYMGM108"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fiatType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TWD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TESTNET"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sessionToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d1f2f499-0a9b-4323-89b0-15abe32d3b24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601260773</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>RESPONSE BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"returnCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"814fbdb466bc2d3d77f76f163decb596"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"appId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UVJYMGM108"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"totalValue"</span><span class="p">:</span><span class="w"> </span><span class="mf">118.9000000</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"fiatType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TWD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+     </span><span class="nl">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BPTW"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BPTW"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">109.00</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"fiatType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TWD"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"walletID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"375"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">109.0000000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+     </span><span class="nl">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BPUSD"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BPUSD"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.33</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"fiatType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TWD"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"walletID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"376"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.9000000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+     </span><span class="nl">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BPHK"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BPHK"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"fiatType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TWD"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"walletID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"377"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.85</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"fiats"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601266526</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>Request Headers</strong></p>
+
+<table><thead>
+<tr>
+<th>HeadersName</th>
+<th>Required</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<p><strong>HTTP Request</strong></p>
+
+<p><code>POST /api/WebWallet/balance</code></p>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appId + uuid + fiatType + net + sessionToken + time + hashKey)</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>number</td>
+<td>appId (測試使用9)</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>string</td>
+<td>登入後取得的uuid</td>
+</tr>
+<tr>
+<td>fiatType</td>
+<td>string</td>
+<td>法定貨幣 TWD</td>
+</tr>
+<tr>
+<td>net</td>
+<td>string</td>
+<td>MAIN or TESTNET</td>
+</tr>
+<tr>
+<td>sessionToken</td>
+<td>string</td>
+<td>登入後取得的sessionToken</td>
+</tr>
+<tr>
+<td>time</td>
+<td>number</td>
+<td><a href="https://www.unixtimestamp.com/">unix timestamp</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>Response Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>returnCode</td>
+<td>string</td>
+<td>returnCode</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>result</td>
+<td>object</td>
+<td>response data</td>
+</tr>
+</tbody></table>
+
+<p><strong>result</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appid + returnCode+ uuid + totalValue + fiatType + [coinType + coinName + amount + fiatType + walletID + rate + value] + [fiatType + fiatName + value + walletID] + time + hashKey)</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>number</td>
+<td>appId (測試使用9)</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>string</td>
+<td>unique user id</td>
+</tr>
+<tr>
+<td>totalValue</td>
+<td>number</td>
+<td>是所有代幣的法幣價值總和</td>
+</tr>
+<tr>
+<td>fiatType</td>
+<td>string</td>
+<td>法定貨幣類型</td>
+</tr>
+<tr>
+<td>coins</td>
+<td>list</td>
+<td>擁有的各種代幣</td>
+</tr>
+<tr>
+<td>fiats</td>
+<td>list</td>
+<td>擁有的各種法定貨幣</td>
+</tr>
+<tr>
+<td>time</td>
+<td>number</td>
+<td><a href="https://www.unixtimestamp.com/">unix timestamp</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>coins</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinType</td>
+<td>string</td>
+<td>代幣類型</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>string</td>
+<td>代幣名稱</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>number</td>
+<td>代幣數量</td>
+</tr>
+<tr>
+<td>fiatType</td>
+<td>string</td>
+<td>法定貨幣</td>
+</tr>
+<tr>
+<td>walletID</td>
+<td>string</td>
+<td>錢包ID</td>
+</tr>
+<tr>
+<td>rate</td>
+<td>number</td>
+<td>匯率</td>
+</tr>
+<tr>
+<td>value</td>
+<td>number</td>
+<td>代幣的法定貨幣價值</td>
+</tr>
+</tbody></table>
+
+<p><strong>fiats</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fiatType</td>
+<td>string</td>
+<td>法定貨幣</td>
+</tr>
+<tr>
+<td>fiatName</td>
+<td>string</td>
+<td>法定貨幣名稱</td>
+</tr>
+<tr>
+<td>value</td>
+<td>number</td>
+<td>法定貨幣價值</td>
+</tr>
+<tr>
+<td>walletID</td>
+<td>string</td>
+<td>錢包ID</td>
+</tr>
+</tbody></table>
+<h2 id='sendcoin'>SendCoin</h2>
+<p>給別人代幣.</p>
+
+<blockquote>
+<p>REQUEST BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"499ae95bd43a7c01a83f3e470621fe3e"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fromUUID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UVJYMGM108"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"toUUID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USPVD87"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"coinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BPTW"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"coinAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TESTNET"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sessionToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d1f2f499-0a9b-4323-89b0-15abe32d3b24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1601260773</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>RESPONSE BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"returnCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c7c9ffd08158f55034a6b2db184721"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>Request Headers</strong></p>
+
+<table><thead>
+<tr>
+<th>HeadersName</th>
+<th>Required</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<p><strong>HTTP Request</strong></p>
+
+<p><code>POST /api/WebWallet/send</code></p>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appId + fromUUID + toUUID + coinType + coinAmount + net + sessionToken + time + hashKey)</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>number</td>
+<td>appId (測試使用9)</td>
+</tr>
+<tr>
+<td>fromUUID</td>
+<td>string</td>
+<td>要給代幣的uuid</td>
+</tr>
+<tr>
+<td>toUUID</td>
+<td>string</td>
+<td>要收代幣的uuid</td>
+</tr>
+<tr>
+<td>coinType</td>
+<td>string</td>
+<td>代幣類型</td>
+</tr>
+<tr>
+<td>coinAmount</td>
+<td>number</td>
+<td>要付多少代幣數量</td>
+</tr>
+<tr>
+<td>net</td>
+<td>string</td>
+<td>MAIN or TESTNET</td>
+</tr>
+<tr>
+<td>sessionToken</td>
+<td>string</td>
+<td>要給代幣的人登入後取得的sessionToken</td>
+</tr>
+<tr>
+<td>time</td>
+<td>number</td>
+<td><a href="https://www.unixtimestamp.com/">unix timestamp</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>Response Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>returnCode</td>
+<td>string</td>
+<td>returnCode</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>result</td>
+<td>object</td>
+<td>response data</td>
+</tr>
+</tbody></table>
+
+<p><strong>result</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appid + returnCode + hashKey)</td>
+</tr>
+</tbody></table>
+<h1 id='md5-hash'>MD5 Hash</h1>
+<p>MD5 Hash.</p>
+
+<blockquote>
+<p>REQUEST BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"string"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>RESPONSE BODY</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"returnCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hash code"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>Request Headers</strong></p>
+
+<table><thead>
+<tr>
+<th>HeadersName</th>
+<th>Required</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>Yes</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<p><strong>HTTP Request</strong></p>
+
+<p><code>POST /api/App/getMD5HashCode</code></p>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>string</td>
+<td>string</td>
+<td>所需的資料組合後的原始字串</td>
+</tr>
+<tr>
+<td>appId</td>
+<td>number</td>
+<td>appId (測試使用9)</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>returnCode</td>
+<td>string</td>
+<td>returnCode</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>message</td>
+</tr>
+<tr>
+<td>result</td>
+<td>object</td>
+<td>response data</td>
+</tr>
+</tbody></table>
+
+<p><strong>result</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>MD5Hash產生 (appid + returnCode + hashKey)</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
@@ -580,12 +1369,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
